@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 
 const AddBooks = () => {
     const [imageURL,setImageURL] = useState(null);
-    console.log(imageURL);
         const [formData,setFormData] = useState({
             name:'',
             author:'',
@@ -12,7 +11,7 @@ const AddBooks = () => {
         })
         
     const add=()=>{
-        fetch('http://localhost:5000/addBooks',{
+        fetch('https://apricot-cupcake-42554.herokuapp.com/addBooks',{
           method:'POST',
           headers:{
             'Content-Type':'application/json'
@@ -66,9 +65,8 @@ const AddBooks = () => {
             </div>
             <div className='col-md-6 d-flex flex-column'>
             <input type="text"name='price' className='mt-4'  placeholder='Price' onBlur={handleOnBlur}/>
-            <input type="file" className='mt-4' onChange={handleImageUpload}/>
+            <input type="file" className='mt-4 text-white' onChange={handleImageUpload}/>
             </div>
-            
             </form>
             <div className="d-flex justify-content-center align-items-center">
              <button onClick={add} className="mt-3 btn btn-info">Add Books</button>

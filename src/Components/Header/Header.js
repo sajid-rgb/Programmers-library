@@ -5,11 +5,15 @@ import { UserContext } from '../../App';
 
 const Header = () => {
   const [loggedInUser,setLoggedInUser] = useContext(UserContext)
-  const [isSignIn,setIsSignIn] = useState(true)
   console.log('email',loggedInUser.email);
   
   const handleSignOut = ()=>{
-    setLoggedInUser({})
+    setLoggedInUser({
+      name:'',
+      email:'',
+      isSignIn:'false'
+    })
+    
   }
     return (
         <div className='bg-light'>
@@ -23,8 +27,8 @@ const Header = () => {
       <Nav.Link as={Link} to="/orders" className="text-secondary">Orders</Nav.Link>
       <Nav.Link as={Link} to="/admin" className="text-secondary">admin</Nav.Link>
       {
-        isSignIn ?<Nav.Link as={Link} to="/signin" className="text-secondary">Sign In</Nav.Link>:<div><p>{loggedInUser.name}</p>
-        <button onClick={handleSignOut}>Sign Out</button></div>
+        loggedInUser.isSignIn ?<Nav.Link as={Link} to="/signin" className="text-secondary">Sign In</Nav.Link>:<div className='d-flex flex-column flex-md-row'><p className="text-dark ml-md-2 ml-0 mt-2">{loggedInUser.name}</p>
+        <p onClick={handleSignOut} className='ml-md-2 ml-0 text-dark mt-2' style={{cursor:'pointer'}}>Sign Out</p></div>
       }
       
       

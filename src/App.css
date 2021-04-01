@@ -1,5 +1,6 @@
 .App{
     overflow-x: hidden;
+    overflow-y: auto;
     background-image: url('./book-bg.jpg');
     background-repeat: no-repeat;
     background-size: cover;

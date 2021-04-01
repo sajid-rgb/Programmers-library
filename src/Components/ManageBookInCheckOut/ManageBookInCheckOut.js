@@ -14,6 +14,7 @@ const ManageBookInCheckOut = ({bookOrderList}) => {
                     <td className="w-25 m-3" style={{borderBottom:'2px solid black'}}>{userEmail}</td>
                     <td className="w-25 m-3" style={{borderBottom:'2px solid black'}}>{price}</td>
                     <td className='w-25 m-3' style={{borderBottom:'2px solid black'}}>{time}</td>
+                    
                 </tr>
             </table>
         </div>

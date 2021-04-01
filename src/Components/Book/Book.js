@@ -2,7 +2,6 @@ import { Button } from 'react-bootstrap';
 import React, { useContext } from 'react';
 import { Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { IdContext } from '../../App';
 const Book = ({book}) => {
     const {name,imageURL,price,author,_id}=book;
     return (

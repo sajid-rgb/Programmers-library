@@ -9,7 +9,7 @@ const Orders = () => {
     const [loading,setLoading] = useState(true)
     const [isOrderPlace,setIsOrderPlace] = useState(false)
     useEffect(()=>{
-        fetch('http://localhost:5000/collect')
+        fetch('https://apricot-cupcake-42554.herokuapp.com/collect')
         .then(res=>res.json())
         .then(data=>{
             setBook(data)
@@ -19,16 +19,16 @@ const Orders = () => {
     let total = 0;
     const [loggedInUser,setLoggedInUser] = useContext(UserContext)
     const booksUser = book.filter(bk=>bk.userEmail===loggedInUser.email)
-    
-   booksUser.map(b=>{
-            total=total+parseInt(b.price)
+    // console.log('user',booksUser);
+   booksUser.map(bookPr=>{
+            total=total+parseInt(bookPr.price)
 })
 const handleOrderPlace = () =>{
     setIsOrderPlace(true)
 
 }
  return (
-        <div className="container">
+        <div className="">
             {
                  loading ? <div className="d-flex justify-content-center align-items-center w-100">
                  <div class="spinner-border text-warning text-center" style={{width:'3rem',height:'3rem'}} role="status">
@@ -41,17 +41,17 @@ const handleOrderPlace = () =>{
                     </Card>
                     <Link to='/'>Go Home</Link>
                 </div>:<div className="container bg-dark rounded mt-4">
-                 <div className="container ">
-            <tr  className="d-flex justify-content-evenly">
-                <th className="w-25 text-white">Book Name</th>
+                 <div className="container">
+            <tr  className="d-flex justify-content-around">
+                <th className="w-50 text-white">Book Name</th>
                 {/* <th className="w-25">User Name</th> */}
-                <th className="w-25 text-white">User Email</th>
-                <th className="w-25 text-white">Price</th>
-                <th className='w-25 text-white'>Order Time</th>
+                <th className="w-50 text-white">User Email</th>
+                <th className="w-50 text-white">Price</th>
+                <th className='w-50 text-white'>Order Time</th>
             </tr>
             </div>
            {
-               booksUser.map(bk=><ManageBookInCheckOut bookOrderList={bk}  ></ManageBookInCheckOut>)
+               booksUser.map(bk=><ManageBookInCheckOut bookOrderList={bk} key={bk._id} ></ManageBookInCheckOut>)
            }
            {/* <hr className='w-100 ' style={{color:'red'}} /> */}
            <div className="d-flex justify-content-center mb-4">
