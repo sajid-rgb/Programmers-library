@@ -12,27 +12,37 @@ import {
 import CheckOut from './Components/CheckOut/CheckOut';
 import { createContext, useState } from 'react';
 import Admin from './Components/Admin/Admin';
-export const IdContext = createContext()
+import LogIn from './Components/LogIn/LogIn';
+import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
+import Orders from './Components/ManageCheckOut/Orders';
+export const UserContext = createContext()
 function App() {
-
+   const [loggedInUser,setLoggedInUser] = useState({})
   return (
     <div className="App">
-
+       <UserContext.Provider value={[loggedInUser,setLoggedInUser]}>
       <Router>
         <Header></Header>
        <Switch>
         <Route exact path="/"><Home></Home></Route>
           <Route path="/home"><Home></Home></Route>
-          <Route path="/addBooks"><AddBooks></AddBooks></Route>
-          <Route path='/book/:id'>
+          <PrivateRoute  path="/addBooks"><AddBooks></AddBooks></PrivateRoute >
+          <PrivateRoute  path='/book/:id'>
             <CheckOut></CheckOut>
-          </Route>
-          <Route path='/admin'>
+          </PrivateRoute >
+          <PrivateRoute path='/admin'>
             <Admin></Admin>
+          </PrivateRoute>
+          <PrivateRoute path='/orders'>
+            <Orders></Orders>
+          </PrivateRoute>
+          <Route path='/signin'>
+            <LogIn></LogIn>
           </Route>
           <Route path="*"><h3 className="text-center text-danger">404-Link not found</h3></Route>
         </Switch>
     </Router>
+    </UserContext.Provider>
     </div>
   );
 }

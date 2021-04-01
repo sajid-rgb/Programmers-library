@@ -14,7 +14,7 @@ const Book = ({book}) => {
                     <Card.Subtitle>by {author}</Card.Subtitle>
                     <div className="d-flex justify-content-between mt-2">
                     <Card.Text >${price}</Card.Text>
-                     <div className="button btn btn-success"><Link to={'/book/'+_id} className='text-white'>Buy Now</Link></div>
+                    <Link to={'/book/'+_id} className='text-white'><div className="button btn btn-success">Buy Now</div></Link>
                     </div>
                 </Card.Body>
             </Card>

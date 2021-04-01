@@ -56,10 +56,9 @@ const AddBooks = () => {
         }
 
     }
-    console.log(formData);
     return (
         <div>
-            <h4 className='text-center text-muted'>Only for developer</h4>
+            <h4 className='text-center text-muted'>Manage Products</h4>
             <form action="" className='container row mx-auto'>
             <div className='col-md-6 d-flex flex-column'>
             <input type="text" name='name' className='mt-4' placeholder='Book Name' onBlur={handleOnBlur}/>

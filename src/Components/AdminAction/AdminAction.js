@@ -13,12 +13,12 @@ const AdminAction = ({book}) => {
     }
     return (
         <div>
-            <table className="container mt-3">
-                <tr className="d-flex justify-content-around ">
-                    <td className="w-50">{name}</td>
-                    <td className="w-50">{author}</td>
-                    <td className="w-25">{price}</td>
-                    <td><button onClick={() =>handleDeleteBook(_id)} className='btn btn-danger'>Delete</button></td>
+            <table className="container mt-0 bg-white">
+                <tr className="d-flex justify-content-around text-dark ">
+                    <td className="w-50 m-3" style={{borderBottom:'2px solid black'}}>{name}</td>
+                    <td className="w-50 m-3" style={{borderBottom:'2px solid black'}}>{author}</td>
+                    <td className="w-25 m-3" style={{borderBottom:'2px solid black'}}>{price}</td>
+                    <td className=""><button onClick={() =>handleDeleteBook(_id)} className='btn btn-danger m-3' style={{borderBottom:'2px solid black'}}>Delete</button></td>
                 </tr>
             </table>
         </div>
