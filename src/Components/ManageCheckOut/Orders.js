@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../../App';
-import ManageBookInCheckOut from '../ManageBookInCheckOut/ManageBookInCheckOut';
+import ManageOrder from '../ManageBookInCheckOut/ManageOrder';
 import pic from '../../tenor (1).gif'
 import { Link } from 'react-router-dom';
-import { Button, Card } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import './Order.css'
 import Loading from '../Loading/Loading';
 const Orders = () => {
@@ -51,7 +51,7 @@ const Orders = () => {
                                 </tr>
                             </div>
                             {
-                                booksUser.map(bk => <ManageBookInCheckOut bookOrderList={bk} key={bk._id} ></ManageBookInCheckOut>)
+                                booksUser.map(bk => <ManageOrder bookOrderList={bk} key={bk._id} ></ManageOrder>)
                             }
                             <div className="d-flex flex-column flex-md-row justify-content-center mb-4">
                                 <h3 className='text-warning text-center mt-2 ml-md-4 ml-1'>TOTAL = ${total}</h3>

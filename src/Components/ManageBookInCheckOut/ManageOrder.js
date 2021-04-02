@@ -1,7 +1,7 @@
 import React from 'react';
-import './ManageBookCheckOut.css';
-const ManageBookInCheckOut = ({ bookOrderList }) => {
-    const { name, price, userEmail, time } = bookOrderList;
+import './ManageOrder.css';
+const MangeOrder = ({ bookOrderList }) => {
+    const { name, price, time } = bookOrderList;
     return (
         <div>
             <div className=" mt-0 ml-md-3 mr-md-3 bg-success rounded shadow">
@@ -17,4 +17,4 @@ const ManageBookInCheckOut = ({ bookOrderList }) => {
     );
 };
 
-export default ManageBookInCheckOut;
+export default MangeOrder;
