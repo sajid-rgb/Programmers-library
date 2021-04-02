@@ -12,9 +12,7 @@ const Home = () => {
             })
     }, [])
     return (
-
         <div>
-
             <div className="d-flex justify-content-center text-center container mt-3">
 
                 <input type="text" placeholder='Enter book name' className='form-control w-50' /><button className='btn btn-success ml-3'>Search</button>
@@ -26,7 +24,6 @@ const Home = () => {
                 </div>
             }
             <div className='row container mx-auto mt-3 mb-5'>
-
                 {
                     books.map(book => <Book book={book} key={book._id}></Book>)
                 }
