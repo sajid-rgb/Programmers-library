@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../../App';
+import Loading from '../Loading/Loading';
 
 const CheckOut = () => {
     const { id } = useParams()
@@ -40,10 +41,7 @@ const CheckOut = () => {
     return (
         <div className='text-center'>
             {
-                loading ? <div className="d-flex justify-content-center align-items-center w-100">
-                    <div class="spinner-border text-warning text-center" style={{ width: '3rem', height: '3rem' }} role="status">
-                    </div>
-                </div> : <div className='row container mx-auto mt-5'>
+                loading ? <Loading></Loading> : <div className='row container mx-auto mt-5'>
                     <div className="col-lg-6  text-lg-right text-center">
                         <img src={book.imageURL} alt="" className='w-50' />
                     </div>

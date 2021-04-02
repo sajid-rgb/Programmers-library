@@ -4,6 +4,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import AddBooks from '../AddBooks/AddBooks';
 import AdminAction from '../AdminAction/AdminAction';
+import Loading from '../Loading/Loading';
 
 const Admin = () => {
     const [books, setBooks] = useState([])
@@ -16,14 +17,11 @@ const Admin = () => {
                 setBooks(data)
                 setLoading(false)
             })
-    },[])
+    }, [])
     return (
         <div className='mt-md-4 mt-0'>
             {
-                loading ? <div className="d-flex justify-content-center align-items-center w-100">
-                    <div class="spinner-border text-warning text-center" style={{ width: '3rem', height: '3rem' }} role="status">
-                    </div>
-                </div> : <div className="row mb-4 ">
+                loading ? <Loading></Loading> : <div className="row mb-4 ">
                     <div className="col-md-2 d-flex flex-column align-items-center bg-success g-0">
                         <Link className='  mt-3 text-white ' onClick={() => setAdminAction(true)}><FontAwesomeIcon icon={faTasks} className='text-dark mr-2'></FontAwesomeIcon>Manage Products</Link>
                         <Link className=' mt-2 text-white' style={{ marginRight: '40px' }} onClick={() => setAdminAction(false)}><FontAwesomeIcon icon={faPlus} className='text-dark mr-1'></FontAwesomeIcon> Add Books</Link>

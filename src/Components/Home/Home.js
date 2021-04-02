@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Book from '../Book/Book';
+import Loading from '../Loading/Loading';
 const Home = () => {
     const [books, setBooks] = useState([])
     const [loading, setLoading] = useState(true)
@@ -18,10 +19,7 @@ const Home = () => {
                 <input type="text" placeholder='Enter book name' className='form-control w-50' /><button className='btn btn-success ml-3'>Search</button>
             </div>
             {
-                loading && <div className="d-flex justify-content-center align-items-center w-100">
-                    <div class="spinner-border text-warning text-center" style={{ width: '3rem', height: '3rem' }} role="status">
-                    </div>
-                </div>
+                loading && <Loading></Loading>
             }
             <div className='row container mx-auto mt-3 mb-5'>
                 {

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const AddBooks = () => {
   const [imageURL, setImageURL] = useState(null);
@@ -11,22 +12,22 @@ const AddBooks = () => {
   })
 
   const handleAddBooks = () => {
-    fetch('https://apricot-cupcake-42554.herokuapp.com/addBooks', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(formData)
-    })
+    if (formData.name && formData.author && formData.price && formData.imageURL) {
+      fetch('https://apricot-cupcake-42554.herokuapp.com/addBooks', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      })
+    }
   }
   const handleImageUpload = (event) => {
     const imageData = new FormData()
     imageData.set('key', '6d76573589b4c4c6e469c0754b0a8289')
     imageData.set('image', event.target.files[0])
-
     axios.post('https://api.imgbb.com/1/upload',
       imageData)
-
       .then(function (response) {
         const newFormData = { ...formData }
         newFormData.imageURL = response.data.data.display_url
@@ -37,21 +38,22 @@ const AddBooks = () => {
         console.log(error);
       });
   }
+  const handleFormData = (value, name) => {
+    const newFormData = { ...formData }
+    newFormData[name] = value
+    setFormData(newFormData)
+
+  }
   const handleOnBlur = (event) => {
     if (event.target.name === 'name') {
-      const newFormData = { ...formData }
-      newFormData.name = event.target.value
-      setFormData(newFormData)
+      handleFormData(event.target.value, event.target.name)
+
     }
     if (event.target.name === 'author') {
-      const newFormData = { ...formData }
-      newFormData.author = event.target.value
-      setFormData(newFormData)
+      handleFormData(event.target.value, event.target.name)
     }
     if (event.target.name === 'price') {
-      const newFormData = { ...formData }
-      newFormData.price = event.target.value
-      setFormData(newFormData)
+      handleFormData(event.target.value, event.target.name)
     }
 
   }
@@ -69,7 +71,7 @@ const AddBooks = () => {
         </div>
       </form>
       <div className="d-flex justify-content-center align-items-center">
-        <button onClick={handleAddBooks} className="mt-3 btn btn-info">Add Books</button>
+        <button as={Link} to='/home' onClick={handleAddBooks} className="mt-3 btn btn-info">Add Books</button>
       </div>
     </div>
   );

@@ -19,39 +19,34 @@ const LogIn = () => {
     let history = useHistory();
     let location = useLocation();
     let { from } = location.state || { from: { pathname: "/" } };
+    const handleSetSigInUser = (signInUser) => {
+        const newUser = { ...user }
+        newUser.email = signInUser.email
+        newUser.name = signInUser.displayName
+        setUser(newUser)
+        newUser.isSignIn = false
+        setLoggedInUser(newUser)
+        history.replace(from);
+
+    }
     const handleSignIn = () => {
-        const provider = new firebase.auth.GoogleAuthProvider();
-        firebase.auth().signInWithPopup(provider)
+        const googleProvider = new firebase.auth.GoogleAuthProvider();
+        firebase.auth().signInWithPopup(googleProvider)
             .then((result) => {
-                const us = result.user;
-                const newUser = { ...user }
-                newUser.email = us.email
-                newUser.name = us.displayName
-                setUser(newUser)
-                newUser.isSignIn = false
-                setLoggedInUser(newUser)
-                history.replace(from);
+                const googleUser = result.user;
+                handleSetSigInUser(googleUser)
+
             })
             .catch((error) => {
                 const errorMessage = error.message;
-                console.log(errorMessage);
             });
     }
     const handleFbSignIn = () => {
         const fbProvider = new firebase.auth.FacebookAuthProvider();
-        firebase
-            .auth()
-            .signInWithPopup(fbProvider)
+        firebase.auth().signInWithPopup(fbProvider)
             .then((result) => {
-
-                const use = result.user;
-                const newUser = { ...user }
-                newUser.email = use.email
-                newUser.name = use.displayName
-                setUser(newUser)
-                newUser.isSignIn = false
-                setLoggedInUser(newUser)
-                history.replace(from);
+                const fbUser = result.user;
+                handleSetSigInUser(fbUser)
             })
             .catch((error) => {
                 const errorMessage = error.message;
