@@ -3,7 +3,8 @@ import { UserContext } from '../../App';
 import ManageBookInCheckOut from '../ManageBookInCheckOut/ManageBookInCheckOut';
 import pic from '../../tenor (1).gif'
 import { Link } from 'react-router-dom';
-import { Card } from 'react-bootstrap';
+import { Button, Card } from 'react-bootstrap';
+import './Order.css'
 const Orders = () => {
     const [book, setBook] = useState([])
     const [loading, setLoading] = useState(true)
@@ -36,25 +37,26 @@ const Orders = () => {
                 </div> : <div>
                     {
                         isOrderPlace ? <div className="d-flex flex-column justify-content-center align-items-center mt-5 mt-md-0">
-                            <Card className='w-50 mt-5 img-fluid'>
-                                <Card.Img src={pic}></Card.Img>
-                            </Card>
-                            <Link to='/'>Go Home</Link>
-                        </div> : <div className="bg-dark rounded mt-4 container pt-1">
-                            <div className="bg-light mt-4  rounded shadow">
-                                <tr className="d-flex justify-content-around text-dark mt-4">
-                                    <th className="w-50 m-3">Book Name</th>
-                                    <th className="w-50 m-3">User Email</th>
-                                    <th className="w-25 m-3">Price</th>
-                                    <th className="w-25 m-3">Order Time</th>
+                            <div className='mt-md-5 mt-5 text-center align-items-center '  >
+                                <img src={pic}  className='thank-div'></img>
+                            </div>
+                            <Button as={Link} to='/' className='text-white btn btn-success mt-2'>Go Home</Button>
+                        </div> : <div className="bg-dark ml-md-3 mr-md-3  rounded mt-4  pt-1">
+                            <div className="bg-light mt-4 ml-md-3 mr-md-3 rounded shadow">
+                                <h6 className='text-center'>Welcome {booksUser[0].userName} Here is your Order List</h6>
+                                <tr className="d-flex justify-content-evenly text-dark mt-4">
+                                    <th className="w-100 mt-3 ml-2 mb-3" >Book Name</th>
+                                    <th className="w-100 mt-3 mb-3">User Email</th>
+                                    <th className="w-100 mt-3 ml-3 mb-3">Price</th>
+                                    <th className="w-100 mt-3 mb-3">Order Time</th>
                                 </tr>
                             </div>
                             {
                                 booksUser.map(bk => <ManageBookInCheckOut bookOrderList={bk} key={bk._id} ></ManageBookInCheckOut>)
                             }
                             <div className="d-flex flex-column flex-md-row justify-content-center mb-4">
-                                <h3 className=' ml-5 text-warning text-center mt-2 ml-4'>TOTAL = ${total}</h3>
-                                <button className='btn btn-success ml-3 mb-3 mt-2' onClick={handleOrderPlace}>Order Place</button>
+                                <h3 className='  text-warning text-center mt-2 ml-md-4 ml-1'>TOTAL = ${total}</h3>
+                                <button className='btn btn-success ml-md-3 ml-1 mr-1 mr-md-0 mb-3 mt-2' onClick={handleOrderPlace}>Order Place</button>
                             </div>
                         </div>
                     }

@@ -15,7 +15,6 @@ import Admin from './Components/Admin/Admin';
 import LogIn from './Components/LogIn/LogIn';
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
 import Orders from './Components/ManageCheckOut/Orders';
-import SignUp from './Components/SignUp/SignUp';
 export const UserContext = createContext()
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({
@@ -41,9 +40,6 @@ function App() {
             </PrivateRoute>
             <Route path='/signin'>
               <LogIn></LogIn>
-            </Route>
-            <Route path='/signUp'>
-              <SignUp></SignUp>
             </Route>
             <Route path="*"><h3 className="text-center text-danger">404-Link not found</h3></Route>
           </Switch>

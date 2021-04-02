@@ -16,7 +16,7 @@ const Admin = () => {
                 setBooks(data)
                 setLoading(false)
             })
-    }, [])
+    },[])
     return (
         <div className='mt-md-4 mt-0'>
             {
@@ -41,7 +41,7 @@ const Admin = () => {
                                     </tr>
                                 </div>
                                 {
-                                    books.map(book => <AdminAction book={book} key={book._id}></AdminAction>)
+                                    books.map(book => <AdminAction book={book} key={book._id} ></AdminAction>)
                                 }
                             </div> : <AddBooks></AddBooks>
                         }

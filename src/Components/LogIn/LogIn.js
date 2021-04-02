@@ -60,18 +60,6 @@ const LogIn = () => {
 
     return (
         <div className="text-center d-flex flex-column justify-content-center align-items-center  mt-5 ">
-            {/* <form action="" className='d-flex flex-column justify-content-center align-items-center rounded bg-light w-75' style={{height:'75vh'}}>
-            <h6 className='text-dark mt-5'>PROGRAMMER</h6>
-            <h6 className=' text-success' style={{letterSpacing:'7px'}}>LIBRARY</h6>
-            <h4>Please Sign In First</h4>
-                <input type="text" className="form-control  mt-4 w-75" placeholder="Enter email"/>
-                <input type="password" className="form-control mt-2 w-75" placeholder="Enter Password"/>
-                <div className="d-flex flex-md-row flex-column mt-md-3 mt-0">
-                <button className='btn btn-primary mt-2 mb-3'>Sign In</button>
-                <Link className='mt-md-3 mt-0 ml-3'>forget password?</Link>
-                </div>
-                <Link to='/signUp'>I have no account</Link>
-            </form> */}
             <div className="d-flex  flex-column bg-light w-75 mt-5  justify-content-center align-items-center rounded" style={{ height: '0%' }}>
                 <h6 className='text-dark mt-5'>PROGRAMMER</h6>
                 <h6 className=' text-success' style={{ letterSpacing: '7px' }}>LIBRARY</h6>

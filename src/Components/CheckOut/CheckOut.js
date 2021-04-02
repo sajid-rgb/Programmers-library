@@ -1,5 +1,5 @@
+import Moment from 'moment';
 import React, { useContext, useEffect, useState } from 'react';
-import { Card } from 'react-bootstrap';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../../App';
@@ -18,13 +18,13 @@ const CheckOut = () => {
             })
     })
     const date = new Date()
-    const time = date.getDate() + "-" + date.getMonth() + "-" + date.getFullYear() + " " + date.getHours() + ':' + date.getMinutes()
+    const moment = Moment(date).format("dddd, MMMM Do YYYY, h:mm:ss a")
     const books = {
         name: book.name,
         price: book.price,
         userEmail: loggedInUser.email,
         userName: loggedInUser.name,
-        time: time
+        time: moment
     }
     const handleAddToCart = () => {
         fetch('https://apricot-cupcake-42554.herokuapp.com/checkout', {
@@ -44,17 +44,17 @@ const CheckOut = () => {
                     <div class="spinner-border text-warning text-center" style={{ width: '3rem', height: '3rem' }} role="status">
                     </div>
                 </div> : <div className='row container mx-auto mt-5'>
-                    <div className="col-md-7 ">
-                        <img src={book.imageURL} alt="" className='w-50'/>
+                    <div className="col-lg-6  text-lg-right text-center">
+                        <img src={book.imageURL} alt="" className='w-50' />
                     </div>
-                    <div className="col-md-5 mt-md-5 mt-0 text-md-left text-center">
-                    <h4 className='text-warning text-bold mt-md-5 mt-0' style={{ fontWeight: 'bold' }}>{book.name}</h4>
-                       <p className='text-md-white text-secondary'>by {book.author}</p>
+                    <div className="col-lg-6 mt-lg-5 mt-0  text-lg-left text-center">
+                        <h5 className='text-warning text-bold mt-lg-5 mt-1' style={{ fontWeight: 'bold' }}>{book.name}</h5>
+                        <h5 className='text-md-white text-success text-bold mt-1 ml-0'>By {book.author}</h5>
                         <h4 className='text-danger' style={{ fontWeight: 'bold' }} >${book.price}</h4>
                         <Link to='/orders' className='text-white'><button className='btn btn-primary mb-4' onClick={handleAddToCart}>Check Out</button> </Link>
                     </div>
-                    
-                    
+
+
                 </div>
             }
         </div>
